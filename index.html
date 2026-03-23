@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>英语每日练习</title>
+    <style>
+        body { font-family: Arial; padding: 20px; max-width: 500px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 20px; }
+        .question { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 10px; }
+        .option { display: block; width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #007AFF; border-radius: 5px; background: white; }
+        .option.selected { background: #007AFF; color: white; }
+        .submit { padding: 15px 30px; background: #007AFF; color: white; border: none; border-radius: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>英语每日练习</h1>
+        <p>手机优化 · 每日进步</p>
+    </div>
+    
+    <div id="content">
+        <div class="question">
+            <p>1. "Hello" 的中文意思是？</p>
+            <button class="option" onclick="select(this, 0)">你好</button>
+            <button class="option" onclick="select(this, 1)">谢谢</button>
+            <button class="option" onclick="select(this, 2)">再见</button>
+        </div>
+        <div class="question">
+            <p>2. 选择正确的句子：</p>
+            <button class="option" onclick="select(this, 0)">I is student</button>
+            <button class="option" onclick="select(this, 1)">I am student</button>
+            <button class="option" onclick="select(this, 2)">I are student</button>
+        </div>
+        <div class="question">
+            <p>3. "efficient" 是什么意思？</p>
+            <button class="option" onclick="select(this, 0)">高效、不浪费</button>
+            <button class="option" onclick="select(this, 1)">非常昂贵</button>
+            <button class="option" onclick="select(this, 2)">难以理解</button>
+        </div>
+        <div class="question">
+            <p>4. AI在哪个领域帮助诊断疾病？</p>
+            <button class="option" onclick="select(this, 0)">教育</button>
+            <button class="option" onclick="select(this, 1)">医疗</button>
+            <button class="option" onclick="select(this, 2)">娱乐</button>
+        </div>
+    </div>
+    
+    <button class="submit" onclick="submit()" style="width: 100%; margin-top: 20px;">提交答案</button>
+    
+    <div id="result" style="margin-top: 20px; display: none;">
+        <h2>结果：<span id="score">0</span>/4</h2>
+        <p id="message"></p>
+    </div>
+    
+    <script>
+        let answers = [null, null, null, null];
+        const correctAnswers = [0, 1, 0, 1]; // 正确答案索引
+        
+        function select(button, qIndex) {
+            const question = button.parentElement;
+            const options = question.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            button.classList.add('selected');
+            answers[qIndex] = button.textContent;
+        }
+        
+        function submit() {
+            let score = 0;
+            for (let i = 0; i < answers.length; i++) {
+                if (answers[i] !== null) {
+                    const options = document.querySelectorAll(`#content .question:nth-child(${i+1}) .option`);
+                    const userSelected = Array.from(options).find(opt => opt.classList.contains('selected'));
+                    
+                    if (userSelected) {
+                        const userIndex = Array.from(options).indexOf(userSelected);
+                        if (userIndex === correctAnswers[i]) {
+                            score++;
+                            userSelected.style.background = '#34C759';
+                            userSelected.style.color = 'white';
+                        } else {
+                            userSelected.style.background = '#FF3B30';
+                            userSelected.style.color = 'white';
+                            // 标记正确答案
+                            options[correctAnswers[i]].style.background = '#34C759';
+                            options[correctAnswers[i]].style.color = 'white';
+                        }
+                    }
+                }
+            }
+            
+            document.getElementById('score').textContent = score;
+            const message = document.getElementById('message');
+            if (score === 4) {
+                message.textContent = '🎉 太棒了！全对！';
+                message.style.color = '#34C759';
+            } else if (score >= 2) {
+                message.textContent = '👍 不错！继续努力！';
+                message.style.color = '#FF9500';
+            } else {
+                message.textContent = '💪 加油！明天会更好！';
+                message.style.color = '#FF3B30';
+            }
+            
+            document.getElementById('result').style.display = 'block';
+            
+            // 保存进度
+            localStorage.setItem('englishScore', score);
+            localStorage.setItem('englishDate', new Date().toISOString().split('T')[0]);
+            
+            // 禁用提交按钮
+            document.querySelector('.submit').disabled = true;
+            document.querySelector('.submit').textContent = '已完成';
+        }
+        
+        // 加载之前的分数
+        window.onload = function() {
+            const savedScore = localStorage.getItem('englishScore');
+            const savedDate = localStorage.getItem('englishDate');
+            const today = new Date().toISOString().split('T')[0];
+            
+            if (savedScore && savedDate === today) {
+                document.querySelector('.submit').disabled = true;
+                document.querySelector('.submit').textContent = '今日已完成';
+            }
+        }
+    </script>
+</body>
+</html>
