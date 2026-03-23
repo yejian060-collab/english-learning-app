@@ -5,228 +5,205 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英语四级每日练习</title>
     <style>
-        body { font-family: -apple-system, sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; background: #f5f5f7; }
+        body { font-family: Arial; padding: 20px; max-width: 500px; margin: 0 auto; }
         .header { text-align: center; margin-bottom: 30px; }
-        .header h1 { color: #4f46e5; margin-bottom: 5px; }
-        .level-badge { background: #4f46e5; color: white; padding: 4px 12px; border-radius: 12px; font-size: 14px; display: inline-block; }
-        .question { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .question-title { font-weight: 600; margin-bottom: 15px; color: #333; }
-        .passage { background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 15px; line-height: 1.6; }
-        .option { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 2px solid #eaeaea; border-radius: 10px; background: white; text-align: left; font-size: 15px; }
-        .option.selected { border-color: #4f46e5; background: #eef2ff; }
-        .option.correct { border-color: #10b981; background: #e6f7f0; }
-        .option.incorrect { border-color: #ef4444; background: #fee; }
-        .submit-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; margin-top: 20px; }
-        .result { background: white; border-radius: 12px; padding: 25px; margin-top: 20px; display: none; }
-        .score { font-size: 48px; font-weight: 700; text-align: center; margin: 20px 0; color: #4f46e5; }
-        .feedback { margin-top: 20px; }
-        .feedback-item { padding: 15px; border-left: 4px solid #10b981; background: #f9f9f9; margin-bottom: 10px; border-radius: 8px; }
-        .feedback-item.wrong { border-left-color: #ef4444; }
+        .question { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 10px; }
+        .option { display: block; width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #007AFF; border-radius: 5px; background: white; }
+        .option.selected { background: #007AFF; color: white; }
+        .submit { padding: 15px 30px; background: #007AFF; color: white; border: none; border-radius: 10px; font-size: 16px; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>英语四级每日练习</h1>
-        <div class="level-badge">CET-4 Level</div>
-        <p style="color: #666; margin-top: 10px;">每日6题 · 智能难度调整</p>
+        <p>12题 · 每日练习</p>
     </div>
     
     <div id="content">
-        <!-- 题目1：听力理解 -->
+        <!-- 题目1-12 -->
         <div class="question">
-            <div class="question-title">1. 听力理解 (Listening Comprehension)</div>
-            <div class="passage">
-                <strong>对话：</strong><br>
-                M: I'm thinking about taking a course in computer programming next semester. What do you think?<br>
-                W: That's a great idea! The tech industry is booming, and programming skills are in high demand. Have you considered which language you want to learn?<br>
-                M: I was leaning toward Python. I've heard it's beginner-friendly and versatile.<br>
-                W: Excellent choice. Python is widely used in data science and web development.
-            </div>
-            <p><strong>问题：</strong> What is the man planning to do next semester?</p>
-            <button class="option" onclick="selectAnswer(0, 0)">A. Take a computer programming course</button>
-            <button class="option" onclick="selectAnswer(0, 1)">B. Start a tech company</button>
-            <button class="option" onclick="selectAnswer(0, 2)">C. Learn data science techniques</button>
-            <button class="option" onclick="selectAnswer(0, 3)">D. Study web development exclusively</button>
+            <p>1. What is the man considering pursuing? (听力)</p>
+            <button class="option" onclick="select(this, 0)">A. A master's degree in environmental science</button>
+            <button class="option" onclick="select(this, 1)">B. A career in climate policy</button>
+            <button class="option" onclick="select(this, 2)">C. Research in renewable energy</button>
+            <button class="option" onclick="select(this, 3)">D. A PhD in sustainability</button>
         </div>
         
-        <!-- 题目2：阅读理解 -->
         <div class="question">
-            <div class="question-title">2. 阅读理解 (Reading Comprehension)</div>
-            <div class="passage">
-                Climate change represents one of the most pressing challenges of our time. The Intergovernmental Panel on Climate Change (IPCC) has warned that global temperatures could rise by 1.5°C above pre-industrial levels as early as 2030 if current emission trends continue. This increase would have catastrophic consequences, including more frequent extreme weather events, rising sea levels, and biodiversity loss. Mitigation efforts require immediate action from governments, corporations, and individuals alike.
-            </div>
-            <p><strong>问题：</strong> According to the passage, what could happen by 2030 if emission trends continue?</p>
-            <button class="option" onclick="selectAnswer(1, 0)">A. Global temperatures could rise by 1.5°C</button>
-            <button class="option" onclick="selectAnswer(1, 1)">B. All biodiversity will be lost</button>
-            <button class="option" onclick="selectAnswer(1, 2)">C. Sea levels will stop rising</button>
-            <button class="option" onclick="selectAnswer(1, 3)">D. Extreme weather will disappear</button>
+            <p>2. What distinguishes AGI from narrow AI systems? (阅读)</p>
+            <button class="option" onclick="select(this, 0)">A. AGI possesses human-like cognitive abilities across diverse domains</button>
+            <button class="option" onclick="select(this, 1)">B. AGI is better at image recognition</button>
+            <button class="option" onclick="select(this, 2)">C. AGI focuses on specific tasks only</button>
+            <button class="option" onclick="select(this, 3)">D. AGI is already widely implemented</button>
         </div>
         
-        <!-- 题目3：词汇 -->
         <div class="question">
-            <div class="question-title">3. 词汇 (Vocabulary)</div>
-            <p><strong>问题：</strong> Choose the synonym for "ubiquitous":</p>
-            <button class="option" onclick="selectAnswer(2, 0)">A. Pervasive</button>
-            <button class="option" onclick="selectAnswer(2, 1)">B. Scarce</button>
-            <button class="option" onclick="selectAnswer(2, 2)">C. Temporary</button>
-            <button class="option" onclick="selectAnswer(2, 3)">D. Complicated</button>
+            <p>3. Choose the antonym for "ephemeral": (词汇)</p>
+            <button class="option" onclick="select(this, 0)">A. Transient</button>
+            <button class="option" onclick="select(this, 1)">B. Permanent</button>
+            <button class="option" onclick="select(this, 2)">C. Fleeting</button>
+            <button class="option" onclick="select(this, 3)">D. Momentary</button>
         </div>
         
-        <!-- 题目4：语法 -->
         <div class="question">
-            <div class="question-title">4. 语法 (Grammar)</div>
-            <p><strong>问题：</strong> Choose the correct sentence:</p>
-            <button class="option" onclick="selectAnswer(3, 0)">A. If I was you, I would reconsider the proposal.</button>
-            <button class="option" onclick="selectAnswer(3, 1)">B. If I were you, I would reconsider the proposal.</button>
-            <button class="option" onclick="selectAnswer(3, 2)">C. If I am you, I would reconsider the proposal.</button>
-            <button class="option" onclick="selectAnswer(3, 3)">D. If I be you, I would reconsider the proposal.</button>
+            <p>4. Identify the grammatically correct sentence: (语法)</p>
+            <button class="option" onclick="select(this, 0)">A. Neither the manager nor the employees was aware of the policy change.</button>
+            <button class="option" onclick="select(this, 1)">B. Neither the manager nor the employees were aware of the policy change.</button>
+            <button class="option" onclick="select(this, 2)">C. Neither the manager or the employees were aware of the policy change.</button>
+            <button class="option" onclick="select(this, 3)">D. Neither the manager nor the employees is aware of the policy change.</button>
         </div>
         
-        <!-- 题目5：完形填空 -->
         <div class="question">
-            <div class="question-title">5. 完形填空 (Cloze Test)</div>
-            <div class="passage">
-                Artificial intelligence is transforming various industries. In healthcare, AI algorithms can analyze medical images with remarkable accuracy, often ___ human experts. However, ethical concerns regarding data privacy and algorithmic bias must be addressed.
-            </div>
-            <p><strong>问题：</strong> Choose the best word to complete the sentence:</p>
-            <button class="option" onclick="selectAnswer(4, 0)">A. surpassing</button>
-            <button class="option" onclick="selectAnswer(4, 1)">B. following</button>
-            <button class="option" onclick="selectAnswer(4, 2)">C. ignoring</button>
-            <button class="option" onclick="selectAnswer(4, 3)">D. assisting</button>
+            <p>5. The rapid digital transformation has ___ traditional business models. (完形)</p>
+            <button class="option" onclick="select(this, 0)">A. disrupted</button>
+            <button class="option" onclick="select(this, 1)">B. preserved</button>
+            <button class="option" onclick="select(this, 2)">C. ignored</button>
+            <button class="option" onclick="select(this, 3)">D. simplified</button>
         </div>
         
-        <!-- 题目6：翻译 -->
         <div class="question">
-            <div class="question-title">6. 翻译 (Translation)</div>
-            <p><strong>问题：</strong> Choose the best translation for: "可持续发展要求我们在经济、社会和环境之间取得平衡。"</p>
-            <button class="option" onclick="selectAnswer(5, 0)">A. Sustainable development requires us to achieve balance between economy, society and environment.</button>
-            <button class="option" onclick="selectAnswer(5, 1)">B. Development that lasts needs us to balance money, people and nature.</button>
-            <button class="option" onclick="selectAnswer(5, 2)">C. To keep developing, we must balance three things: economy, society, environment.</button>
-            <button class="option" onclick="selectAnswer(5, 3)">D. Sustainability demands equilibrium among economic, social, and environmental dimensions.</button>
+            <p>6. "科技创新是推动经济社会发展的核心动力。" (翻译)</p>
+            <button class="option" onclick="select(this, 0)">A. Technology innovation is important for economy.</button>
+            <button class="option" onclick="select(this, 1)">B. Technological innovation serves as the core driving force for economic and social development.</button>
+            <button class="option" onclick="select(this, 2)">C. New tech helps economy grow.</button>
+            <button class="option" onclick="select(this, 3)">D. Innovation in technology pushes development.</button>
+        </div>
+        
+        <div class="question">
+            <p>7. What trade-off does the man mention? (听力2)</p>
+            <button class="option" onclick="select(this, 0)">A. Higher salaries versus housing costs</button>
+            <button class="option" onclick="select(this, 1)">B. Career growth versus family proximity</button>
+            <button class="option" onclick="select(this, 2)">C. Job opportunities versus city size</button>
+            <button class="option" onclick="select(this, 3)">D. Tech sectors versus other industries</button>
+        </div>
+        
+        <div class="question">
+            <p>8. According to the passage, what is a challenge of remote work? (阅读2)</p>
+            <button class="option" onclick="select(this, 0)">A. Maintaining team cohesion</button>
+            <button class="option" onclick="select(this, 1)">B. Increasing productivity</button>
+            <button class="option" onclick="select(this, 2)">C. Reducing overhead costs</button>
+            <button class="option" onclick="select(this, 3)">D. Adopting hybrid models</button>
+        </div>
+        
+        <div class="question">
+            <p>9. What does "ambivalent" mean? (词汇2)</p>
+            <button class="option" onclick="select(this, 0)">A. Having mixed feelings</button>
+            <button class="option" onclick="select(this, 1)">B. Extremely enthusiastic</button>
+            <button class="option" onclick="select(this, 2)">C. Completely opposed</button>
+            <button class="option" onclick="select(this, 3)">D. Indifferent or uninterested</button>
+        </div>
+        
+        <div class="question">
+            <p>10. Choose the sentence with correct punctuation: (语法2)</p>
+            <button class="option" onclick="select(this, 0)">A. The conference which was scheduled for March, has been postponed.</button>
+            <button class="option" onclick="select(this, 1)">B. The conference, which was scheduled for March has been postponed.</button>
+            <button class="option" onclick="select(this, 2)">C. The conference, which was scheduled for March, has been postponed.</button>
+            <button class="option" onclick="select(this, 3)">D. The conference which was scheduled for March has been postponed.</button>
+        </div>
+        
+        <div class="question">
+            <p>11. This approach fosters understanding and minimizes ___ . (完形2)</p>
+            <button class="option" onclick="select(this, 0)">A. collaboration</button>
+            <button class="option" onclick="select(this, 1)">B. misinterpretation</button>
+            <button class="option" onclick="select(this, 2)">C. efficiency</button>
+            <button class="option" onclick="select(this, 3)">D. transparency</button>
+        </div>
+        
+        <div class="question">
+            <p>12. "在全球化背景下，跨文化沟通能力显得尤为重要。" (翻译2)</p>
+            <button class="option" onclick="select(this, 0)">A. In globalization, talking to foreigners is important.</button>
+            <button class="option" onclick="select(this, 1)">B. Cross-cultural communication skills are especially important in the context of globalization.</button>
+            <button class="option" onclick="select(this, 2)">C. Global background needs communication.</button>
+            <button class="option" onclick="select(this, 3)">D. Culture communication is very important now.</button>
         </div>
     </div>
     
-    <button class="submit-btn" id="submitBtn" onclick="submitAnswers()">提交答案 (Submit Answers)</button>
+    <button class="submit" onclick="submit()" style="width: 100%; margin-top: 20px;">提交答案</button>
     
-    <div class="result" id="resultPanel">
-        <h2 style="text-align: center;">练习完成！</h2>
-        <div class="score" id="finalScore">0/6</div>
-        <div style="text-align: center; margin-bottom: 20px;" id="resultMessage"></div>
-        
-        <div class="feedback" id="feedbackContent">
-            <!-- 反馈内容动态生成 -->
-        </div>
-        
-        <button class="submit-btn" style="background: #10b981;" onclick="location.reload()">再做一次</button>
+    <div id="result" style="margin-top: 20px; display: none;">
+        <h2>结果：<span id="score">0</span>/12</h2>
+        <p id="message"></p>
     </div>
     
     <script>
-        // 正确答案 (0-based index)
-        const correctAnswers = [0, 0, 0, 1, 0, 3];
-        const explanations = [
-            "对话中明确提到 'I'm thinking about taking a course in computer programming next semester.'",
-            "文章明确说明 'global temperatures could rise by 1.5°C above pre-industrial levels as early as 2030'",
-            "'ubiquitous' 和 'pervasive' 都表示'无处不在的'",
-            "虚拟语气中，无论主语是什么，be动词都用 'were'",
-            "'surpassing' 表示'超越'，符合上下文AI超越人类专家的意思",
-            "选项D最准确传达了'可持续发展'、'平衡'和'经济、社会、环境三个维度'的意思"
-        ];
+        let answers = new Array(12).fill(null);
+        const correctAnswers = [0, 0, 1, 1, 0, 1, 0, 0, 0, 2, 1, 1];
         
-        let userAnswers = new Array(6).fill(null);
-        
-        function selectAnswer(questionIndex, optionIndex) {
-            // 清除同一问题的其他选项
-            const question = document.querySelectorAll('.question')[questionIndex];
+        function select(button, qIndex) {
+            const question = button.parentElement;
             const options = question.querySelectorAll('.option');
-            options.forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            
-            // 选中当前选项
-            options[optionIndex].classList.add('selected');
-            userAnswers[questionIndex] = optionIndex;
+            options.forEach(opt => opt.classList.remove('selected'));
+            button.classList.add('selected');
+            answers[qIndex] = button.textContent;
         }
         
-        function submitAnswers() {
+        function submit() {
             let score = 0;
-            let feedbackHTML = '';
             
-            // 检查所有题目是否已回答
-            const unanswered = userAnswers.filter(answer => answer === null).length;
+            // 检查是否所有题目都已回答
+            const unanswered = answers.filter(answer => answer === null).length;
             if (unanswered > 0) {
                 alert(`请完成所有题目！还有 ${unanswered} 题未回答。`);
                 return;
             }
             
             // 批改每一题
-            for (let i = 0; i < 6; i++) {
-                const question = document.querySelectorAll('.question')[i];
-                const options = question.querySelectorAll('.option');
-                const userAnswer = userAnswers[i];
-                const isCorrect = userAnswer === correctAnswers[i];
+            for (let i = 0; i < 12; i++) {
+                const options = document.querySelectorAll(`#content .question:nth-child(${i+1}) .option`);
+                const userSelected = Array.from(options).find(opt => opt.classList.contains('selected'));
                 
-                if (isCorrect) score++;
-                
-                // 标记选项
-                options.forEach((opt, idx) => {
-                    opt.classList.remove('correct', 'incorrect');
-                    if (idx === correctAnswers[i]) {
-                        opt.classList.add('correct');
-                    } else if (idx === userAnswer && !isCorrect) {
-                        opt.classList.add('incorrect');
+                if (userSelected) {
+                    const userIndex = Array.from(options).indexOf(userSelected);
+                    if (userIndex === correctAnswers[i]) {
+                        score++;
+                        userSelected.style.background = '#34C759';
+                        userSelected.style.color = 'white';
+                    } else {
+                        userSelected.style.background = '#FF3B30';
+                        userSelected.style.color = 'white';
+                        // 标记正确答案
+                        options[correctAnswers[i]].style.background = '#34C759';
+                        options[correctAnswers[i]].style.color = 'white';
                     }
-                });
-                
-                // 生成反馈
-                feedbackHTML += `
-                    <div class="feedback-item ${isCorrect ? '' : 'wrong'}">
-                        <div><strong>第${i+1}题</strong> - ${isCorrect ? '✅ 正确' : '❌ 错误'}</div>
-                        <div style="margin: 10px 0;">你的答案: ${options[userAnswer].textContent}</div>
-                        <div>正确答案: ${options[correctAnswers[i]].textContent}</div>
-                        <div style="margin-top: 8px; padding: 10px; background: #f0f0f0; border-radius: 6px; font-size: 14px;">
-                            ${explanations[i]}
-                        </div>
-                    </div>
-                `;
+                }
             }
             
-            // 显示结果
-            document.getElementById('finalScore').textContent = `${score}/6`;
-            const message = document.getElementById('resultMessage');
-            
-            if (score === 6) {
-                message.innerHTML = '<span style="color: #10b981;">🎉 优秀！全对！继续保持！</span>';
-            } else if (score >= 4) {
-                message.innerHTML = '<span style="color: #f59e0b;">👍 良好！继续努力！</span>';
-            } else if (score >= 3) {
-                message.innerHTML = '<span style="color: #f59e0b;">💪 及格！需要更多练习！</span>';
+            document.getElementById('score').textContent = score;
+            const message = document.getElementById('message');
+            if (score === 12) {
+                message.textContent = '🎉 优秀！全对！';
+                message.style.color = '#34C759';
+            } else if (score >= 9) {
+                message.textContent = '👍 良好！继续努力！';
+                message.style.color = '#FF9500';
+            } else if (score >= 6) {
+                message.textContent = '💪 及格！需要更多练习！';
+                message.style.color = '#f59e0b';
             } else {
-                message.innerHTML = '<span style="color: #ef4444;">📚 加油！建议复习基础知识！</span>';
+                message.textContent = '📚 加油！建议复习基础知识！';
+                message.style.color = '#ef4444';
             }
             
-            document.getElementById('feedbackContent').innerHTML = feedbackHTML;
-            document.getElementById('resultPanel').style.display = 'block';
-            document.getElementById('submitBtn').disabled = true;
-            document.getElementById('submitBtn').textContent = '已完成';
+            document.getElementById('result').style.display = 'block';
             
             // 保存进度
-            const today = new Date().toISOString().split('T')[0];
-            localStorage.setItem('cet4_score', score);
-            localStorage.setItem('cet4_date', today);
+            localStorage.setItem('englishScore12', score);
+            localStorage.setItem('englishDate12', new Date().toISOString().split('T')[0]);
             
-            // 滚动到结果
-            document.getElementById('resultPanel').scrollIntoView({ behavior: 'smooth' });
+            // 禁用提交按钮
+            document.querySelector('.submit').disabled = true;
+            document.querySelector('.submit').textContent = '今日已完成';
         }
         
-        // 页面加载时检查是否已完成
+        // 加载之前的分数
         window.onload = function() {
-            const savedScore = localStorage.getItem('cet4_score');
-            const savedDate = localStorage.getItem('cet4_date');
+            const savedScore = localStorage.getItem('englishScore12');
+            const savedDate = localStorage.getItem('englishDate12');
             const today = new Date().toISOString().split('T')[0];
             
             if (savedScore && savedDate === today) {
-                document.getElementById('submitBtn').disabled = true;
-                document.getElementById('submitBtn').textContent = '今日已完成';
+                document.querySelector('.submit').disabled = true;
+                document.querySelector('.submit').textContent = '今日已完成';
             }
         }
     </script>
