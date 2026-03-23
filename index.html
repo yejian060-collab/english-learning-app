@@ -8,6 +8,8 @@
         body { font-family: Arial, sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; background: #f5f5f7; }
         .header { text-align: center; margin-bottom: 30px; }
         .header h1 { color: #4f46e5; margin-bottom: 5px; }
+        .section { margin-bottom: 30px; }
+        .section-title { background: #4f46e5; color: white; padding: 10px 15px; border-radius: 8px; margin-bottom: 15px; font-weight: bold; }
         .question { background: white; border-radius: 10px; padding: 20px; margin-bottom: 20px; border: 1px solid #eaeaea; }
         .option { display: block; width: 100%; padding: 12px; margin: 8px 0; border: 2px solid #eaeaea; border-radius: 8px; background: white; text-align: left; }
         .option.selected { border-color: #4f46e5; background: #eef2ff; }
@@ -16,145 +18,170 @@
         .submit { width: 100%; padding: 16px; background: #4f46e5; color: white; border: none; border-radius: 10px; font-size: 16px; margin-top: 20px; }
         .result { background: white; border-radius: 10px; padding: 20px; margin-top: 20px; display: none; }
         .score { font-size: 36px; font-weight: bold; text-align: center; margin: 20px 0; color: #4f46e5; }
+        .audio-note { font-size: 14px; color: #666; margin-top: 5px; }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>📚 Day Day Up</h1>
-        <p>英语每日练习 · 12题 · CET-4水平</p>
+        <p>英语每日练习 · 12题 · 题型集中 · CET-4水平</p>
     </div>
     
     <div id="content">
-        <!-- 题目1 -->
-        <div class="question">
-            <p><strong>1. 听力理解</strong></p>
-            <p>点击播放音频，然后回答问题：</p>
-            <audio controls style="width: 100%; margin: 10px 0;">
-                <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
-            </audio>
-            <p><strong>问题：</strong> What is the man considering pursuing?</p>
-            <button class="option" onclick="select(this, 0)">A. A master's degree in environmental science</button>
-            <button class="option" onclick="select(this, 1)">B. A career in climate policy</button>
-            <button class="option" onclick="select(this, 2)">C. Research in renewable energy</button>
-            <button class="option" onclick="select(this, 3)">D. A PhD in sustainability</button>
+        <!-- 第一部分：听力理解 (2题) -->
+        <div class="section">
+            <div class="section-title">第一部分：听力理解 (Listening Comprehension) - 2题</div>
+            
+            <!-- 听力题1 -->
+            <div class="question">
+                <p><strong>1. 听对话，回答问题：</strong></p>
+                <audio controls style="width: 100%; margin: 10px 0;">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                </audio>
+                <p class="audio-note">🔊 点击播放按钮听对话（模拟英语对话）</p>
+                <p><strong>问题：</strong> What is the main topic of the conversation?</p>
+                <button class="option" onclick="select(this, 0)">A. Weekend travel plans</button>
+                <button class="option" onclick="select(this, 1)">B. Work project deadlines</button>
+                <button class="option" onclick="select(this, 2)">C. Restaurant recommendations</button>
+                <button class="option" onclick="select(this, 3)">D. Movie reviews</button>
+            </div>
+            
+            <!-- 听力题2 -->
+            <div class="question">
+                <p><strong>2. 听对话，回答问题：</strong></p>
+                <audio controls style="width: 100%; margin: 10px 0;">
+                    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+                </audio>
+                <p class="audio-note">🔊 点击播放按钮听对话（模拟英语对话）</p>
+                <p><strong>问题：</strong> What does the woman suggest?</p>
+                <button class="option" onclick="select(this, 0)">A. Postponing the meeting</button>
+                <button class="option" onclick="select(this, 1)">B. Changing the venue</button>
+                <button class="option" onclick="select(this, 2)">C. Inviting more participants</button>
+                <button class="option" onclick="select(this, 3)">D. Preparing a presentation</button>
+            </div>
         </div>
         
-        <!-- 题目2 -->
-        <div class="question">
-            <p><strong>2. 阅读理解</strong></p>
-            <p>AGI would possess human-like cognitive abilities across diverse domains.</p>
-            <p><strong>问题：</strong> What distinguishes AGI from narrow AI systems?</p>
-            <button class="option" onclick="select(this, 0)">A. AGI possesses human-like cognitive abilities across diverse domains</button>
-            <button class="option" onclick="select(this, 1)">B. AGI is better at image recognition</button>
-            <button class="option" onclick="select(this, 2)">C. AGI focuses on specific tasks only</button>
-            <button class="option" onclick="select(this, 3)">D. AGI is already widely implemented</button>
+        <!-- 第二部分：阅读理解 (2题) -->
+        <div class="section">
+            <div class="section-title">第二部分：阅读理解 (Reading Comprehension) - 2题</div>
+            
+            <!-- 阅读题3 -->
+            <div class="question">
+                <p><strong>3. 阅读短文，回答问题：</strong></p>
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 15px; line-height: 1.6;">
+                    Climate change represents one of the most pressing challenges of our time. The Intergovernmental Panel on Climate Change (IPCC) has warned that global temperatures could rise by 1.5°C above pre-industrial levels as early as 2030 if current emission trends continue.
+                </div>
+                <p><strong>问题：</strong> According to the passage, what could happen by 2030?</p>
+                <button class="option" onclick="select(this, 0)">A. Global temperatures could rise by 1.5°C</button>
+                <button class="option" onclick="select(this, 1)">B. All biodiversity will be lost</button>
+                <button class="option" onclick="select(this, 2)">C. Sea levels will stop rising</button>
+                <button class="option" onclick="select(this, 3)">D. Extreme weather will disappear</button>
+            </div>
+            
+            <!-- 阅读题4 -->
+            <div class="question">
+                <p><strong>4. 阅读短文，回答问题：</strong></p>
+                <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 10px 0; font-size: 15px; line-height: 1.6;">
+                    Artificial intelligence is transforming various industries. In healthcare, AI algorithms can analyze medical images with remarkable accuracy, often surpassing human experts. However, ethical concerns regarding data privacy and algorithmic bias must be addressed.
+                </div>
+                <p><strong>问题：</strong> What is mentioned as a concern about AI?</p>
+                <button class="option" onclick="select(this, 0)">A. High cost of implementation</button>
+                <button class="option" onclick="select(this, 1)">B. Data privacy and algorithmic bias</button>
+                <button class="option" onclick="select(this, 2)">C. Limited applications</button>
+                <button class="option" onclick="select(this, 3)">D. Slow processing speed</button>
+            </div>
         </div>
         
-        <!-- 题目3 -->
-        <div class="question">
-            <p><strong>3. 词汇</strong></p>
-            <p><strong>问题：</strong> Choose the antonym for "ephemeral":</p>
-            <button class="option" onclick="select(this, 0)">A. Transient</button>
-            <button class="option" onclick="select(this, 1)">B. Permanent</button>
-            <button class="option" onclick="select(this, 2)">C. Fleeting</button>
-            <button class="option" onclick="select(this, 3)">D. Momentary</button>
+        <!-- 第三部分：词汇 (2题) -->
+        <div class="section">
+            <div class="section-title">第三部分：词汇 (Vocabulary) - 2题</div>
+            
+            <!-- 词汇题5 -->
+            <div class="question">
+                <p><strong>5. Choose the antonym for "ephemeral":</strong></p>
+                <button class="option" onclick="select(this, 0)">A. Transient</button>
+                <button class="option" onclick="select(this, 1)">B. Permanent</button>
+                <button class="option" onclick="select(this, 2)">C. Fleeting</button>
+                <button class="option" onclick="select(this, 3)">D. Momentary</button>
+            </div>
+            
+            <!-- 词汇题6 -->
+            <div class="question">
+                <p><strong>6. What does "ambivalent" mean?</strong></p>
+                <button class="option" onclick="select(this, 0)">A. Having mixed feelings</button>
+                <button class="option" onclick="select(this, 1)">B. Extremely enthusiastic</button>
+                <button class="option" onclick="select(this, 2)">C. Completely opposed</button>
+                <button class="option" onclick="select(this, 3)">D. Indifferent or uninterested</button>
+            </div>
         </div>
         
-        <!-- 题目4 -->
-        <div class="question">
-            <p><strong>4. 语法</strong></p>
-            <p><strong>问题：</strong> Identify the grammatically correct sentence:</p>
-            <button class="option" onclick="select(this, 0)">A. Neither the manager nor the employees was aware of the policy change.</button>
-            <button class="option" onclick="select(this, 1)">B. Neither the manager nor the employees were aware of the policy change.</button>
-            <button class="option" onclick="select(this, 2)">C. Neither the manager or the employees were aware of the policy change.</button>
-            <button class="option" onclick="select(this, 3)">D. Neither the manager nor the employees is aware of the policy change.</button>
+        <!-- 第四部分：语法 (2题) -->
+        <div class="section">
+            <div class="section-title">第四部分：语法 (Grammar) - 2题</div>
+            
+            <!-- 语法题7 -->
+            <div class="question">
+                <p><strong>7. Identify the grammatically correct sentence:</strong></p>
+                <button class="option" onclick="select(this, 0)">A. Neither the manager nor the employees was aware of the policy change.</button>
+                <button class="option" onclick="select(this, 1)">B. Neither the manager nor the employees were aware of the policy change.</button>
+                <button class="option" onclick="select(this, 2)">C. Neither the manager or the employees were aware of the policy change.</button>
+                <button class="option" onclick="select(this, 3)">D. Neither the manager nor the employees is aware of the policy change.</button>
+            </div>
+            
+            <!-- 语法题8 -->
+            <div class="question">
+                <p><strong>8. Choose the sentence with correct punctuation:</strong></p>
+                <button class="option" onclick="select(this, 0)">A. The conference which was scheduled for March, has been postponed.</button>
+                <button class="option" onclick="select(this, 1)">B. The conference, which was scheduled for March has been postponed.</button>
+                <button class="option" onclick="select(this, 2)">C. The conference, which was scheduled for March, has been postponed.</button>
+                <button class="option" onclick="select(this, 3)">D. The conference which was scheduled for March has been postponed.</button>
+            </div>
         </div>
         
-        <!-- 题目5 -->
-        <div class="question">
-            <p><strong>5. 完形填空</strong></p>
-            <p>The rapid digital transformation has ___ traditional business models across industries.</p>
-            <p><strong>问题：</strong> Choose the best word to complete the sentence:</p>
-            <button class="option" onclick="select(this, 0)">A. disrupted</button>
-            <button class="option" onclick="select(this, 1)">B. preserved</button>
-            <button class="option" onclick="select(this, 2)">C. ignored</button>
-            <button class="option" onclick="select(this, 3)">D. simplified</button>
+        <!-- 第五部分：完形填空 (2题) -->
+        <div class="section">
+            <div class="section-title">第五部分：完形填空 (Cloze Test) - 2题</div>
+            
+            <!-- 完形题9 -->
+            <div class="question">
+                <p><strong>9. The rapid digital transformation has ___ traditional business models across industries.</strong></p>
+                <button class="option" onclick="select(this, 0)">A. disrupted</button>
+                <button class="option" onclick="select(this, 1)">B. preserved</button>
+                <button class="option" onclick="select(this, 2)">C. ignored</button>
+                <button class="option" onclick="select(this, 3)">D. simplified</button>
+            </div>
+            
+            <!-- 完形题10 -->
+            <div class="question">
+                <p><strong>10. Effective communication requires not only clarity but also empathy. This approach fosters understanding and minimizes ___ .</strong></p>
+                <button class="option" onclick="select(this, 0)">A. collaboration</button>
+                <button class="option" onclick="select(this, 1)">B. misinterpretation</button>
+                <button class="option" onclick="select(this, 2)">C. efficiency</button>
+                <button class="option" onclick="select(this, 3)">D. transparency</button>
+            </div>
         </div>
         
-        <!-- 题目6 -->
-        <div class="question">
-            <p><strong>6. 翻译</strong></p>
-            <p><strong>问题：</strong> Choose the best translation for: "科技创新是推动经济社会发展的核心动力。"</p>
-            <button class="option" onclick="select(this, 0)">A. Technology innovation is important for economy.</button>
-            <button class="option" onclick="select(this, 1)">B. Technological innovation serves as the core driving force for economic and social development.</button>
-            <button class="option" onclick="select(this, 2)">C. New tech helps economy grow.</button>
-            <button class="option" onclick="select(this, 3)">D. Innovation in technology pushes development.</button>
-        </div>
-        
-        <!-- 题目7 -->
-        <div class="question">
-            <p><strong>7. 听力理解 2</strong></p>
-            <p>点击播放音频，然后回答问题：</p>
-            <audio controls style="width: 100%; margin: 10px 0;">
-                <source src="https://assets.mixkit.co/music/preview/mixkit-driving-ambition-32.mp3" type="audio/mpeg">
-            </audio>
-            <p><strong>问题：</strong> What trade-off does the man mention?</p>
-            <button class="option" onclick="select(this, 0)">A. Higher salaries versus housing costs</button>
-            <button class="option" onclick="select(this, 1)">B. Career growth versus family proximity</button>
-            <button class="option" onclick="select(this, 2)">C. Job opportunities versus city size</button>
-            <button class="option" onclick="select(this, 3)">D. Tech sectors versus other industries</button>
-        </div>
-        
-        <!-- 题目8 -->
-        <div class="question">
-            <p><strong>8. 阅读理解 2</strong></p>
-            <p>Remote work can increase productivity for certain tasks while reducing overhead costs.</p>
-            <p><strong>问题：</strong> According to the passage, what is a benefit of remote work?</p>
-            <button class="option" onclick="select(this, 0)">A. Maintaining team cohesion</button>
-            <button class="option" onclick="select(this, 1)">B. Increasing productivity</button>
-            <button class="option" onclick="select(this, 2)">C. Ensuring data security</button>
-            <button class="option" onclick="select(this, 3)">D. Addressing feelings of isolation</button>
-        </div>
-        
-        <!-- 题目9 -->
-        <div class="question">
-            <p><strong>9. 词汇 2</strong></p>
-            <p><strong>问题：</strong> What does "ambivalent" mean?</p>
-            <button class="option" onclick="select(this, 0)">A. Having mixed feelings</button>
-            <button class="option" onclick="select(this, 1)">B. Extremely enthusiastic</button>
-            <button class="option" onclick="select(this, 2)">C. Completely opposed</button>
-            <button class="option" onclick="select(this, 3)">D. Indifferent or uninterested</button>
-        </div>
-        
-        <!-- 题目10 -->
-        <div class="question">
-            <p><strong>10. 语法 2</strong></p>
-            <p><strong>问题：</strong> Choose the sentence with correct punctuation:</p>
-            <button class="option" onclick="select(this, 0)">A. The conference which was scheduled for March, has been postponed.</button>
-            <button class="option" onclick="select(this, 1)">B. The conference, which was scheduled for March has been postponed.</button>
-            <button class="option" onclick="select(this, 2)">C. The conference, which was scheduled for March, has been postponed.</button>
-            <button class="option" onclick="select(this, 3)">D. The conference which was scheduled for March has been postponed.</button>
-        </div>
-        
-        <!-- 题目11 -->
-        <div class="question">
-            <p><strong>11. 完形填空 2</strong></p>
-            <p>This approach fosters understanding and minimizes ___ .</p>
-            <p><strong>问题：</strong> Choose the best word to complete the sentence:</p>
-            <button class="option" onclick="select(this, 0)">A. collaboration</button>
-            <button class="option" onclick="select(this, 1)">B. misinterpretation</button>
-            <button class="option" onclick="select(this, 2)">C. efficiency</button>
-            <button class="option" onclick="select(this, 3)">D. transparency</button>
-        </div>
-        
-        <!-- 题目12 -->
-        <div class="question">
-            <p><strong>12. 翻译 2</strong></p>
-            <p><strong>问题：</strong> Choose the best translation for: "在全球化背景下，跨文化沟通能力显得尤为重要。"</p>
-            <button class="option" onclick="select(this, 0)">A. In globalization, talking to foreigners is important.</button>
-            <button class="option" onclick="select(this, 1)">B. Cross-cultural communication skills are especially important in the context of globalization.</button>
-            <button class="option" onclick="select(this, 2)">C. Global background needs communication.</button>
-            <button class="option" onclick="select(this, 3)">D. Culture communication is very important now.</button>
+        <!-- 第六部分：翻译 (2题) -->
+        <div class="section">
+            <div class="section-title">第六部分：翻译 (Translation) - 2题</div>
+            
+            <!-- 翻译题11 -->
+            <div class="question">
+                <p><strong>11. Choose the best translation for: "科技创新是推动经济社会发展的核心动力。"</strong></p>
+                <button class="option" onclick="select(this, 0)">A. Technology innovation is important for economy.</button>
+                <button class="option" onclick="select(this, 1)">B. Technological innovation serves as the core driving force for economic and social development.</button>
+                <button class="option" onclick="select(this, 2)">C. New tech helps economy grow.</button>
+                <button class="option" onclick="select(this, 3)">D. Innovation in technology pushes development.</button>
+            </div>
+            
+            <!-- 翻译题12 -->
+            <div class="question">
+                <p><strong>12. Choose the best translation for: "在全球化背景下，跨文化沟通能力显得尤为重要。"</strong></p>
+                <button class="option" onclick="select(this, 0)">A. In globalization, talking to foreigners is important.</button>
+                <button class="option" onclick="select(this, 1)">B. Cross-cultural communication skills are especially important in the context of globalization.</button>
+                <button class="option" onclick="select(this, 2)">C. Global background needs communication.</button>
+                <button class="option" onclick="select(this, 3)">D. Culture communication is very important now.</button>
+            </div>
         </div>
     </div>
     
@@ -169,7 +196,7 @@
     
     <script>
         let answers = new Array(12).fill(null);
-        const correctAnswers = [0, 0, 1, 1, 0, 1, 0, 1, 0, 2, 1, 1];
+        const correctAnswers = [1, 0, 0, 1, 1, 0, 1, 2, 0, 1, 1, 1];
         
         function select(button, qIndex) {
             const question = button.parentElement;
