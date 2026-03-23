@@ -3,209 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>英语四级每日练习</title>
+    <title>Day Day Up - 英语每日练习</title>
     <style>
-        body { font-family: Arial; padding: 20px; max-width: 500px; margin: 0 auto; }
+        body { font-family: -apple-system, sans-serif; padding: 20px; max-width: 500px; margin: 0 auto; background: #f5f5f7; }
         .header { text-align: center; margin-bottom: 30px; }
-        .question { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 10px; }
-        .option { display: block; width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #007AFF; border-radius: 5px; background: white; }
-        .option.selected { background: #007AFF; color: white; }
-        .submit { padding: 15px 30px; background: #007AFF; color: white; border: none; border-radius: 10px; font-size: 16px; }
+        .header h1 { color: #4f46e5; margin-bottom: 5px; font-size: 28px; }
+        .tagline { color: #666; font-size: 16px; margin-top: 5px; }
+        .level-badge { background: #4f46e5; color: white; padding: 4px 12px; border-radius: 12px; font-size: 14px; display: inline-block; }
+        .progress { margin: 15px 0; }
+        .progress-bar { height: 6px; background: #eaeaea; border-radius: 3px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #4f46e5; width: 0%; transition: width 0.3s; }
+        .question { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .question-title { font-weight: 600; margin-bottom: 15px; color: #333; display: flex; align-items: center; }
+        .q-number { background: #4f46e5; color: white; width: 28px; height: 28px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 14px; }
+        .audio-player { width: 100%; margin: 15px 0; }
+        .play-btn { padding: 10px 20px; background: #4f46e5; color: white; border: none; border-radius: 20px; font-size: 14px; cursor: pointer; }
+        .option { display: block; width: 100%; padding: 14px; margin: 8px 0; border: 2px solid #eaeaea; border-radius: 10px; background: white; text-align: left; font-size: 15px; }
+        .option.selected { border-color: #4f46e5; background: #eef2ff; }
+        .option.correct { border-color: #10b981; background: #e6f7f0; }
+        .option.incorrect { border-color: #ef4444; background: #fee; }
+        .submit-btn { width: 100%; padding: 18px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; margin-top: 20px; }
+        .result { background: white; border-radius: 12px; padding: 25px; margin-top: 20px; display: none; }
+        .score { font-size: 48px; font-weight: 700; text-align: center; margin: 20px 0; color: #4f46e5; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0; }
+        .stat-card { background: white; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #eaeaea; }
+        .stat-value { font-size: 24px; font-weight: 700; color: #4f46e5; }
+        .stat-label { font-size: 12px; color: #666; margin-top: 5px; }
+        .restart-btn { width: 100%; padding: 18px; background: #10b981; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; margin-top: 20px; }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>英语四级每日练习</h1>
-        <p>12题 · 每日练习</p>
+        <h1>📚 Day Day Up</h1>
+        <div class="tagline">英语每日练习 · 每天进步一点点</div>
+        <div class="level-badge">12题 · CET-4 Level</div>
+        
+        <div class="progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div style="font-size: 14px; color: #666; margin-top: 5px;">完成: <span id="currentProgress">0</span>/12</div>
+        </div>
     </div>
     
     <div id="content">
-        <!-- 题目1-12 -->
-        <div class="question">
-            <p>1. What is the man considering pursuing? (听力)</p>
-            <button class="option" onclick="select(this, 0)">A. A master's degree in environmental science</button>
-            <button class="option" onclick="select(this, 1)">B. A career in climate policy</button>
-            <button class="option" onclick="select(this, 2)">C. Research in renewable energy</button>
-            <button class="option" onclick="select(this, 3)">D. A PhD in sustainability</button>
-        </div>
-        
-        <div class="question">
-            <p>2. What distinguishes AGI from narrow AI systems? (阅读)</p>
-            <button class="option" onclick="select(this, 0)">A. AGI possesses human-like cognitive abilities across diverse domains</button>
-            <button class="option" onclick="select(this, 1)">B. AGI is better at image recognition</button>
-            <button class="option" onclick="select(this, 2)">C. AGI focuses on specific tasks only</button>
-            <button class="option" onclick="select(this, 3)">D. AGI is already widely implemented</button>
-        </div>
-        
-        <div class="question">
-            <p>3. Choose the antonym for "ephemeral": (词汇)</p>
-            <button class="option" onclick="select(this, 0)">A. Transient</button>
-            <button class="option" onclick="select(this, 1)">B. Permanent</button>
-            <button class="option" onclick="select(this, 2)">C. Fleeting</button>
-            <button class="option" onclick="select(this, 3)">D. Momentary</button>
-        </div>
-        
-        <div class="question">
-            <p>4. Identify the grammatically correct sentence: (语法)</p>
-            <button class="option" onclick="select(this, 0)">A. Neither the manager nor the employees was aware of the policy change.</button>
-            <button class="option" onclick="select(this, 1)">B. Neither the manager nor the employees were aware of the policy change.</button>
-            <button class="option" onclick="select(this, 2)">C. Neither the manager or the employees were aware of the policy change.</button>
-            <button class="option" onclick="select(this, 3)">D. Neither the manager nor the employees is aware of the policy change.</button>
-        </div>
-        
-        <div class="question">
-            <p>5. The rapid digital transformation has ___ traditional business models. (完形)</p>
-            <button class="option" onclick="select(this, 0)">A. disrupted</button>
-            <button class="option" onclick="select(this, 1)">B. preserved</button>
-            <button class="option" onclick="select(this, 2)">C. ignored</button>
-            <button class="option" onclick="select(this, 3)">D. simplified</button>
-        </div>
-        
-        <div class="question">
-            <p>6. "科技创新是推动经济社会发展的核心动力。" (翻译)</p>
-            <button class="option" onclick="select(this, 0)">A. Technology innovation is important for economy.</button>
-            <button class="option" onclick="select(this, 1)">B. Technological innovation serves as the core driving force for economic and social development.</button>
-            <button class="option" onclick="select(this, 2)">C. New tech helps economy grow.</button>
-            <button class="option" onclick="select(this, 3)">D. Innovation in technology pushes development.</button>
-        </div>
-        
-        <div class="question">
-            <p>7. What trade-off does the man mention? (听力2)</p>
-            <button class="option" onclick="select(this, 0)">A. Higher salaries versus housing costs</button>
-            <button class="option" onclick="select(this, 1)">B. Career growth versus family proximity</button>
-            <button class="option" onclick="select(this, 2)">C. Job opportunities versus city size</button>
-            <button class="option" onclick="select(this, 3)">D. Tech sectors versus other industries</button>
-        </div>
-        
-        <div class="question">
-            <p>8. According to the passage, what is a challenge of remote work? (阅读2)</p>
-            <button class="option" onclick="select(this, 0)">A. Maintaining team cohesion</button>
-            <button class="option" onclick="select(this, 1)">B. Increasing productivity</button>
-            <button class="option" onclick="select(this, 2)">C. Reducing overhead costs</button>
-            <button class="option" onclick="select(this, 3)">D. Adopting hybrid models</button>
-        </div>
-        
-        <div class="question">
-            <p>9. What does "ambivalent" mean? (词汇2)</p>
-            <button class="option" onclick="select(this, 0)">A. Having mixed feelings</button>
-            <button class="option" onclick="select(this, 1)">B. Extremely enthusiastic</button>
-            <button class="option" onclick="select(this, 2)">C. Completely opposed</button>
-            <button class="option" onclick="select(this, 3)">D. Indifferent or uninterested</button>
-        </div>
-        
-        <div class="question">
-            <p>10. Choose the sentence with correct punctuation: (语法2)</p>
-            <button class="option" onclick="select(this, 0)">A. The conference which was scheduled for March, has been postponed.</button>
-            <button class="option" onclick="select(this, 1)">B. The conference, which was scheduled for March has been postponed.</button>
-            <button class="option" onclick="select(this, 2)">C. The conference, which was scheduled for March, has been postponed.</button>
-            <button class="option" onclick="select(this, 3)">D. The conference which was scheduled for March has been postponed.</button>
-        </div>
-        
-        <div class="question">
-            <p>11. This approach fosters understanding and minimizes ___ . (完形2)</p>
-            <button class="option" onclick="select(this, 0)">A. collaboration</button>
-            <button class="option" onclick="select(this, 1)">B. misinterpretation</button>
-            <button class="option" onclick="select(this, 2)">C. efficiency</button>
-            <button class="option" onclick="select(this, 3)">D. transparency</button>
-        </div>
-        
-        <div class="question">
-            <p>12. "在全球化背景下，跨文化沟通能力显得尤为重要。" (翻译2)</p>
-            <button class="option" onclick="select(this, 0)">A. In globalization, talking to foreigners is important.</button>
-            <button class="option" onclick="select(this, 1)">B. Cross-cultural communication skills are especially important in the context of globalization.</button>
-            <button class="option" onclick="select(this, 2)">C. Global background needs communication.</button>
-            <button class="option" onclick="select(this, 3)">D. Culture communication is very important now.</button>
-        </div>
+        <!-- 题目动态生成 -->
     </div>
     
-    <button class="submit" onclick="submit()" style="width: 100%; margin-top: 20px;">提交答案</button>
+    <button class="submit-btn" id="submitBtn" onclick="submitAnswers()">提交答案</button>
     
-    <div id="result" style="margin-top: 20px; display: none;">
-        <h2>结果：<span id="score">0</span>/12</h2>
-        <p id="message"></p>
+    <div class="result" id="resultPanel">
+        <h2 style="text-align: center;">🎉 练习完成！</h2>
+        <div class="score" id="finalScore">0/12</div>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="correctCount">0</div>
+                <div class="stat-label">正确</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="wrongCount">0</div>
+                <div class="stat-label">错误</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="accuracyRate">0%</div>
+                <div class="stat-label">正确率</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 20px; font-size: 16px;" id="resultMessage"></div>
+        
+        <button class="restart-btn" onclick="location.reload()">🔁 再做一次</button>
     </div>
     
     <script>
-        let answers = new Array(12).fill(null);
-        const correctAnswers = [0, 0, 1, 1, 0, 1, 0, 0, 0, 2, 1, 1];
+        // 12道题目数据 - 包含音频的听力题
+        const questions = [
+            {
+                type: '听力',
+                title: '听力理解',
+                hasAudio: true,
+                audioUrl: 'https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3',
+                question: 'What is the man considering pursuing?',
+                options: [
+                    'A. A master\'s degree in environmental science',
+                    'B. A career in climate policy',
+                    'C. Research in renewable energy',
+                    'D. A PhD in sustainability'
+                ],
+                correct: 0,
+                explanation: '对话中男士明确提到正在考虑攻读环境科学硕士学位。'
+            },
+            {
+                type: '阅读',
+                title: '阅读理解',
+                hasAudio: false,
+                passage: 'The concept of artificial general intelligence (AGI) remains a topic of intense debate among researchers. While narrow AI systems excel at specific tasks like image recognition or language translation, AGI would possess human-like cognitive abilities across diverse domains.',
+                question: 'What distinguishes AGI from narrow AI systems?',
+                options: [
+                    'A. AGI possesses human-like cognitive abilities across diverse domains',
+                    'B. AGI is better at image recognition',
+                    'C. AGI focuses on specific tasks only',
+                    'D. AGI is already widely implemented'
+                ],
+                correct: 0,
+                explanation: '文章明确说明AGI具有跨领域的人类级认知能力，而窄AI只擅长特定任务。'
+            },
+            {
+                type: '词汇',
+                title: '词汇',
+                hasAudio: false,
+                question: 'Choose the antonym for "ephemeral":',
+                options: [
+                    'A. Transient',
+                    'B. Permanent',
+                    'C. Fleeting',
+                    'D. Momentary'
+                ],
+                correct: 1,
+                explanation: '"ephemeral"意思是短暂的，反义词是"permanent"（永久的）。'
+            },
+            {
+                type: '语法',
+                title: '语法',
+                hasAudio: false,
+                question: 'Identify the grammatically correct sentence:',
+                options: [
+                    'A. Neither the manager nor the employees was aware of the policy change.',
+                    'B. Neither the manager nor the employees were aware of the policy change.',
+                    'C. Neither the manager or the employees were aware of the policy change.',
+                    'D. Neither the manager nor the employees is aware of the policy change.'
+                ],
+                correct: 1,
+                explanation: '在"neither...nor"结构中，动词与最近的主语一致。这里最近的主语是"employees"（复数），所以用"were"。'
+            },
+            {
+                type: '完形',
+                title: '完形填空',
+                hasAudio: false,
+                passage: 'The rapid digital transformation has ___ traditional business models across industries.',
+                question: 'Choose the best word to complete the sentence:',
+                options: [
+                    'A. disrupted',
+                    'B. preserved',
+                    'C. ignored',
+                    'D. simplified'
+                ],
+                correct: 0,
+                explanation: '"disrupted"（颠覆）最符合上下文，描述数字化转型对传统商业模式的冲击。'
+            },
+            {
+                type: '翻译',
+                title: '翻译',
+                hasAudio: false,
+                question: 'Choose the best translation for: "科技创新是推动经济社会发展的核心动力。"',
+                options: [
+                    'A. Technology innovation is important for economy.',
+                    'B. Technological innovation serves as the core driving force for economic and social development.',
+                    'C. New tech helps economy grow.',
+                    'D. Innovation in technology pushes development.'
+                ],
+                correct: 1,
+                explanation: '选项B最准确地传达了"科技创新"、"核心动力"和"经济社会发展"三个关键要素。'
+            },
+            {
+                type: '听力',
+                title: '听力理解 2',
+                hasAudio: true,
+                audioUrl: 'https://assets.mixkit.co/music/preview/mixkit-driving-ambition-32.mp3',
+                question: 'What trade-off does the man mention?',
+                options: [
+                    'A. Higher salaries versus housing costs',
+                    'B. Career growth versus family proximity',
+                    'C. Job opportunities versus city size',
+                    'D. Tech sectors versus other industries'
+                ],
+                correct: 0,
+                explanation: '对话中提到高薪与住房成本之间的权衡。'
+            },
+            {
+                type: '阅读',
+                title: '阅读理解 2',
+                hasAudio: false,
+                passage: 'Remote work has become increasingly prevalent since the pandemic. Studies show that remote work can increase productivity for certain tasks while reducing overhead costs.',
+                question: 'According to the passage, what is a benefit of remote work?',
+                options: [
+                    'A. Maintaining team cohesion',
+                    'B. Increasing productivity',
+                    'C. Ensuring data security',
+                    'D. Addressing feelings of isolation'
+                ],
+                correct: 1,
+                explanation: '文章明确提到远程工作可以提高某些任务的生产力。'
+            },
+            {
+                type: '词汇',
+                title: '词汇 2',
+                hasAudio: false,
+                question: 'What does "ambivalent" mean?',
+                options: [
+                    'A. Having mixed feelings',
+                    'B. Extremely enthusiastic',
+                    'C. Completely opposed',
+                    'D. Indifferent or uninterested'
+                ],
+                correct: 0,
+                explanation: '"ambivalent"意思是矛盾心理的、有矛盾情感的。'
+            },
+            {
+                type: '语法',
+                title: '语法 2',
+                hasAudio: false,
+                question: 'Choose the sentence with correct punctuation:',
+                options: [
+                    'A. The conference which was scheduled for March, has been postponed.',
+                    'B. The conference, which was scheduled for March has been postponed.',
+                    'C. The conference, which was scheduled for March, has been postponed.',
+                    'D. The conference which was scheduled for March has been postponed.'
+                ],
+                correct: 2,
+                explanation: '非限制性定语从句需要用逗号与主句隔开。'
+            },
+            {
+                type: '完形',
+                title: '完形填空 2',
+                hasAudio: false,
+                passage: 'Effective communication requires not only clarity but also empathy. This approach fosters understanding and minimizes ___ .',
+                question: 'Choose the best word to complete the sentence:',
+                options: [
+                    'A. collaboration',
+                    'B. misinterpretation',
+                    'C. efficiency',
+                    'D. transparency'
+                ],
+                correct: 1,
+                explanation: '"misinterpretation"（误解）最符合上下文。'
+            },
+            {
+                type: '翻译',
+                title: '翻译 2',
+                hasAudio: false,
+                question: 'Choose the best translation for: "在全球化背景下，跨文化沟通能力显得尤为重要。"',
+                options: [
+                    'A. In globalization, talking to foreigners is important.',
+                    'B. Cross-cultural communication skills are especially important in the context of globalization.',
+                    'C. Global background needs communication.',
+                    'D. Culture communication is very important now.'
+                ],
+                correct: 1,
+                explanation: '选项B准确传达了"全球化背景"、"跨文化沟通能力"和"尤为重要"三个关键点。'
+            }
+        ];
+
+        let userAnswers = new Array(12).fill(null);
         
-        function select(button, qIndex) {
-            const question = button.parentElement;
-            const options = question.querySelectorAll('.option');
-            options.forEach(opt => opt.classList.remove('selected'));
-            button.classList.add('selected');
-            answers[qIndex] = button.textContent;
+        // 页面加载时渲染题目
+        document.addEventListener('DOMContentLoaded', function() {
+            renderQuestions();
+            checkDailyCompletion();
+        });
+        
+        // 渲染所有题目
+        function renderQuestions() {
+            let html = '';
+            questions.forEach((q, index) => {
+                html += `
+                    <div class="question" id="q${index}">
+                        <div class="question-title">
+                            <div class="q-number">${index + 1}</div>
+                            <div>${q.type} · ${q.title}</div>
+                        </div>`;
+                
+                if (q.hasAudio) {
+                    html += `
+                        <div style="margin: 15px 0;">
+                            <audio controls class="audio-player">
+                                <source src="${q.audioUrl}" type="audio/mpeg">
+                                您的浏览器不支持音频播放。
+                            </audio>
+                            <div style="margin-top: 10px; font-size: 14px; color: #666;">
+                                🔊 点击播放按钮听对话，然后回答问题
+                            </div>
+                        </div>`;
+                } else if (q.passage) {
+                    html += `<div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin: 15px 0; font-size: 15px; line-height: 1.6;">${q.passage}</div>`;
+                }
+                
+                html += `<p style="font-weight: 600; margin: 15px 0;">${q.question}</p>`;
+                
+                q.options.forEach((opt, optIndex) => {
+                    html += `<button class="option" onclick="selectAnswer(${index}, ${optIndex})">${opt}</button>`;
+                });
+                
+                html += `</div>`;
+            });
+            
+            document.getElementById('content').innerHTML = html;
         }
         
-        function submit() {
-            let score = 0;
+        function selectAnswer(questionIndex, optionIndex) {
+            // 清除同一问题的其他选项
+            const question = document.getElementById(`q${questionIndex}`);
+            const options = question.querySelectorAll('.option');
+            options.forEach(opt => {
+                opt.classList.remove('selected');
+            });
             
-            // 检查是否所有题目都已回答
-            const unanswered = answers.filter(answer => answer === null).length;
-            if (unanswered > 0) {
-                alert(`请完成所有题目！还有 ${unanswered} 题未回答。`);
-                return;
-            }
+            // 选中当前选项
+            options[optionIndex].classList.add('selected');
+            userAnswers[questionIndex] = optionIndex;
+            
+            // 更新进度
+            updateProgress();
+        }
+        
+        function updateProgress() {
+            const answered = userAnswers.filter(answer => answer !== null).length;
+            const percent = (answered / 12) * 100;
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('currentProgress').textContent = answered;
+            
+            // 启用/禁用提交按钮
+            document.getElementById('submitBtn').disabled = answered < 12;
+        }
+        
+        function submitAnswers() {
+            let correctCount = 0;
             
             // 批改每一题
-            for (let i = 0; i < 12; i++) {
-                const options = document.querySelectorAll(`#content .question:nth-child(${i+1}) .option`);
-                const userSelected = Array.from(options).find(opt => opt.classList.contains('selected'));
+            questions.forEach((q, index) => {
+                const question = document.getElementById(`q${index}`);
+                const options = question.querySelectorAll('.option');
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === q.correct;
                 
-                if (userSelected) {
-                    const userIndex = Array.from(options).indexOf(userSelected);
-                    if (userIndex === correctAnswers[i]) {
-                        score++;
-                        userSelected.style.background = '#34C759';
-                        userSelected.style.color = 'white';
-                    } else {
-                        userSelected.style.background = '#FF3B30';
-                        userSelected.style.color = 'white';
-                        // 标记正确答案
-                        options[correctAnswers[i]].style.background = '#34C759';
-                        options[correctAnswers[i]].style.color = 'white';
+                if (isCorrect) correctCount++;
+                
+                // 标记选项
+                options.forEach((opt, idx) => {
+                    opt.classList.remove('correct', 'incorrect');
+                    if (idx === q.correct) {
+                        opt.classList.add('correct');
+                    } else if (idx === userAnswer && !isCorrect) {
+                        opt.classList.add('incorrect');
                     }
-                }
-            }
+                });
+            });
             
-            document.getElementById('score').textContent = score;
-            const message = document.getElementById('message');
-            if (score === 12) {
-                message.textContent = '🎉 优秀！全对！';
-                message.style.color = '#34C759';
-            } else if (score >= 9) {
-                message.textContent = '👍 良好！继续努力！';
-                message.style.color = '#FF9500';
-            } else if (score >= 6) {
-                message.textContent = '💪 及格！需要更多练习！';
-                message.style.color = '#f59e0b';
-            } else {
-                message.textContent = '📚 加油！建议复习基础知识！';
-                message.style.color = '#ef4444';
-            }
+            // 显示结果
+            const wrongCount = 12 - correctCount;
+            const accuracy = Math.round((correctCount / 12) * 100);
             
-            document.getElementById('result').style.display = 'block';
+            document.getElementById('finalScore').textContent = `${correctCount}/12`;
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('wrongCount').textContent = wrongCount;
+            document.getElementById('accuracyRate').textContent = `${accuracy}%`;
             
-            // 保存进度
-            localStorage.setItem('englishScore12', score);
-            localStorage.setItem('englishDate12', new Date().toISOString().split('T')[0]);
-            
-            // 禁用提交按钮
-            document.querySelector('.submit').disabled = true;
-            document.querySelector('.submit').textContent = '今日已完成';
-        }
-        
-        // 加载之前的分数
-        window.onload = function() {
-            const savedScore = localStorage.getItem('englishScore12');
-            const savedDate = localStorage.getItem('englishDate12');
-            const today = new Date().toISOString().split('T')[0];
-            
-            if (savedScore && savedDate === today) {
-                document.querySelector('.submit').disabled = true;
-                document.querySelector('.submit').textContent = '今日已完成';
-            }
-        }
-    </script>
-</body>
-</html>
+            const message = document.getElementById('resultMessage');
+            if (correctCount === 12) {
+                message.innerHTML = '<span style="color: #10b981;">🎉 完美！继续保持！</span>';
+            } else if (correctCount >= 9) {
+                message.innerHTML = '<span style
